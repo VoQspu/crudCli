@@ -1,5 +1,6 @@
 package com.company.utility;
 
+import com.company.exceptions.CsvIntegrityFailedException;
 import com.company.models.Book;
 
 public class CsvUtility {
@@ -17,6 +18,9 @@ public class CsvUtility {
         } catch (NumberFormatException e) {
             System.out.println("Oczekiwano liczby!"); //w razie ręcznej podmiany liczby w pliku
             return null;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Elementu nie ma w tablicy");
+            System.exit(1);
         }
 
         return book;

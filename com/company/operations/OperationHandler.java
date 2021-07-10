@@ -1,5 +1,6 @@
 package com.company.operations;
 
+import com.company.exceptions.CsvIntegrityFailedException;
 import com.company.models.Book;
 import com.company.utility.CsvUtility;
 import com.company.utility.FileUtility;
@@ -20,7 +21,7 @@ public class OperationHandler {
         this.scanner = scanner;
     }
 
-    private List<Book> getBooksFromFile() {
+    private List<Book> getBooksFromFile(){
         List<String> csvFileLines = FileUtility.readLinesFromFile();
 
         return csvFileLines.stream()

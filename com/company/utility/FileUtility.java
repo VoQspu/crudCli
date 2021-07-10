@@ -15,6 +15,7 @@ public class FileUtility {
             }
         } catch (FileNotFoundException e) {
             System.out.println("Nie ma takiego pliku!");
+            System.exit(1);
         }
         return csvFileLines;
     }
@@ -27,7 +28,7 @@ public class FileUtility {
             }
             writer.flush();
         } catch (IOException e) {
-            System.out.println("Problem z dostępem do pliku!");
+            System.out.println("Problem z dostępem do pliku, zapis nie nastąpił!");
         }
     }
 }
