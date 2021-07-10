@@ -22,7 +22,7 @@ public class BookAdder implements Operationable {
         Scanner scanner = new Scanner(System.in);
         Book newBook = new Book();
 
-        newBook.setId(books.size()); //nowe id większe o 1
+        newBook.setId(books.size() + 1); //nowe id większe o 1, id zaczyna się od 1 w csv
 
         try {
             System.out.println("Podaj tytuł:");
