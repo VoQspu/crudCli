@@ -2,8 +2,6 @@ package com.company.utility;
 
 import com.company.models.Book;
 
-import java.util.List;
-
 public class CsvUtility {
 
     public static Book serialize(String lineToSerialize) {
@@ -25,9 +23,9 @@ public class CsvUtility {
 
     public static String deserialize(Book book) {
         StringBuilder builder = new StringBuilder();
-        builder.append(book.getId() + ",")
-                .append(book.getTitle() + ",")
-                .append(book.getAuthorId() + ",")
+        builder.append(book.getId()).append(",")
+                .append(book.getTitle()).append(",")
+                .append(book.getAuthorId()).append(",")
                 .append(book.getPublicationDate());
         return builder.toString();
     }

@@ -22,14 +22,16 @@ public class OperationHandler {
         List<String> csvFileLines = FileUtility.readLinesFromFile();
 
         return csvFileLines.stream()
-                .map(line -> CsvUtility.serialize(line))
+                .map(CsvUtility::serialize)
                 .collect(Collectors.toList());
     }
 
     public void saveBooksToFile() {
-        FileUtility.writeLinesToFile(books.stream()
-        .map(book -> CsvUtility.deserialize(book))
-        .toList());
+        List<String> booksToSaveInCsv = books.stream()
+        .map(CsvUtility::deserialize)
+        .toList();
+
+        FileUtility.writeLinesToFile(booksToSaveInCsv);
     }
 
     public List<Operationable> getOperations() {

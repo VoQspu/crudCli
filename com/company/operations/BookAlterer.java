@@ -21,7 +21,7 @@ public class BookAlterer implements Operationable {
     @Override
     public void performAction() {
         Scanner scanner = new Scanner(System.in);
-        Book foundBook = new Book();
+        Book foundBook = null;
 
         System.out.println("Podaj id książki, którą chcesz zmienić: ");
         try {
@@ -34,30 +34,22 @@ public class BookAlterer implements Operationable {
             }
             if (foundBook != null) {
                 System.out.println(CsvUtility.deserialize(foundBook));
-                System.out.println("Co chcesz zmienić?\n" +
-                        "1. id\n" +
-                        "2. tytuł\n" +
-                        "3. autor id\n" +
-                        "4. rok publikacji\n");
+                System.out.println("""
+                        Co chcesz zmienić?
+                        1. id
+                        2. tytuł
+                        3. autor id
+                        4. rok publikacji
+                        """);
                 int alterChoice = Integer.parseInt(scanner.nextLine());
 
 
                 switch (alterChoice) {
-                    case 1:
-                        changeId(scanner, foundBook);
-                        break;
-                    case 2:
-                        changeTitle(scanner, foundBook);
-                        break;
-                    case 3:
-                        changeAuthorId(scanner, foundBook);
-                        break;
-                    case 4:
-                        changePublicationDate(scanner, foundBook);
-                        break;
-                    default:
-                        System.out.println("Nieprawidłowa opcja!");
-                        break;
+                    case 1 -> changeId(scanner, foundBook);
+                    case 2 -> changeTitle(scanner, foundBook);
+                    case 3 -> changeAuthorId(scanner, foundBook);
+                    case 4 -> changePublicationDate(scanner, foundBook);
+                    default -> System.out.println("Nieprawidłowa opcja!");
                 }
             } else {
                 System.out.println("Nie znaleziono książki!");
