@@ -6,6 +6,7 @@ import com.company.utility.FileUtility;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class OperationHandler {
@@ -22,7 +23,7 @@ public class OperationHandler {
 
         return csvFileLines.stream()
                 .map(line -> CsvUtility.serialize(line))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     public void saveBooksToFile() {
