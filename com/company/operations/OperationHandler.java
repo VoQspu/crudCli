@@ -10,32 +10,25 @@ import java.util.List;
 
 public class OperationHandler {
 
-    List<Book> books = new ArrayList<>();
+    List<Book> books;
     List<Operationable> operations = new ArrayList<>();
 
     public OperationHandler() {
-        getBooksFromFile();
+        books = getBooksFromFile();
     }
 
     private List<Book> getBooksFromFile() {
         List<String> csvFileLines = FileUtility.readLinesFromFile();
-        List<Book> booksFromCsv = new ArrayList<>();
 
-        csvFileLines.stream()
-                .map(line -> booksFromCsv.add(CsvUtility.serialize(line)))
-                .close();
-
-        return booksFromCsv;
+        return csvFileLines.stream()
+                .map(line -> CsvUtility.serialize(line))
+                .toList();
     }
 
     public void saveBooksToFile() {
-        List<String> booksPreparedToSave = new ArrayList<>();
-
-        books.stream()
-                .map(book -> booksPreparedToSave.add(CsvUtility.deserialize(book)))
-                .close();
-
-        FileUtility.writeLinesToFile(booksPreparedToSave);
+        FileUtility.writeLinesToFile(books.stream()
+        .map(book -> CsvUtility.deserialize(book))
+        .toList());
     }
 
     public List<Operationable> getOperations() {
