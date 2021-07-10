@@ -10,8 +10,8 @@ import java.util.List;
 
 public class OperationHandler {
 
-    List<Book> books;
-    List<Operationable> operations;
+    List<Book> books = new ArrayList<>();
+    List<Operationable> operations = new ArrayList<>();
 
     public OperationHandler() {
         getBooksFromFile();
