@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         OperationHandler operationHandler = new OperationHandler();
-        List<Operationable> operations = OperationHandler.getOperations();
+        List<Operationable> operations = operationHandler.getOperations();
 
         System.out.println("Aby zakończyć program wybierz 0");
         for (Operationable operation : operations) {
