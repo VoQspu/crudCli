@@ -1,7 +1,6 @@
 package com.company.operations;
 
 import com.company.models.Book;
-import com.company.utility.CsvUtility;
 
 import java.util.List;
 import java.util.Scanner;
@@ -36,24 +35,25 @@ public class BookAlterer implements Operationable {
             }
             if (foundBook == null) {
                 System.out.println("Nie znaleziono książki!");
-            } else {
-                System.out.println(foundBook);
-                System.out.println("""
-                        Co chcesz zmienić?
-                        1. tytuł
-                        2. autor id
-                        3. rok publikacji
-                        """);
-                int alterChoice = Integer.parseInt(scanner.nextLine());
-
-
-                switch (alterChoice) {
-                    case 1 -> changeTitle(scanner, foundBook);
-                    case 2 -> changeAuthorId(scanner, foundBook);
-                    case 3 -> changePublicationDate(scanner, foundBook);
-                    default -> System.out.println("Nieprawidłowa opcja!");
-                }
+                return;
             }
+            System.out.println(foundBook);
+            System.out.println("""
+                    Co chcesz zmienić?
+                    1. tytuł
+                    2. autor id
+                    3. rok publikacji
+                    """);
+            int alterChoice = Integer.parseInt(scanner.nextLine());
+
+
+            switch (alterChoice) {
+                case 1 -> changeTitle(scanner, foundBook);
+                case 2 -> changeAuthorId(scanner, foundBook);
+                case 3 -> changePublicationDate(scanner, foundBook);
+                default -> System.out.println("Nieprawidłowa opcja!");
+            }
+
         } catch (NumberFormatException e) {
             System.out.println("Oczekiwano liczby!");
         }

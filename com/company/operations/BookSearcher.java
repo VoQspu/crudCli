@@ -28,7 +28,7 @@ public class BookSearcher implements Operationable {
             books.stream()
                     .filter(book -> book.getId() == choice)
                     .findFirst()
-                    .ifPresent(book -> System.out.println(CsvUtility.deserialize(book)));
+                    .ifPresent(System.out::println);
         } catch (NumberFormatException e) {
             System.out.println("Oczekiwano liczby!");
         }

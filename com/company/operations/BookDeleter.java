@@ -21,7 +21,6 @@ public class BookDeleter implements Operationable{
 
     @Override
     public void performAction() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj id książki, którą chcesz usunąć: ");
         try {
             int choice = Integer.parseInt(scanner.nextLine());
