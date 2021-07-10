@@ -2,7 +2,6 @@ package com.company.operations;
 
 import com.company.models.Book;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,8 +20,6 @@ public class BookDeleter implements Operationable{
     @Override
     public void performAction() {
         Scanner scanner = new Scanner(System.in);
-        List<String> deletedBooks = new ArrayList<>();
-        Book bookToDelete = new Book();
         System.out.println("Podaj id książki, którą chcesz usunąć: ");
         try {
             int choice = Integer.parseInt(scanner.nextLine());
@@ -33,10 +30,5 @@ public class BookDeleter implements Operationable{
         } catch (NumberFormatException e) {
             System.out.println("Oczekiwano liczby!");
         }
-        books.remove(bookToDelete);
-        for (Book b : books) {
-            deletedBooks.add(CsvUtility.deserialize(b));
-        }
-        FileUtility.writeLinesToFile(deletedBooks);
     }
 }
