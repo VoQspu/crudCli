@@ -7,9 +7,11 @@ import java.util.Scanner;
 
 public class BookAdder implements Operationable {
     List<Book> books;
+    Scanner scanner;
 
-    public BookAdder(List<Book> books) {
+    public BookAdder(Scanner scanner, List<Book> books) {
         this.books = books;
+        this.scanner = scanner;
     }
 
     @Override
@@ -19,7 +21,6 @@ public class BookAdder implements Operationable {
 
     @Override
     public void performAction() {
-        Scanner scanner = new Scanner(System.in);
         Book newBook = new Book();
 
         newBook.setId(books.size() + 1); //nowe id większe o 1, id zaczyna się od 1 w csv

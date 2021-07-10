@@ -7,9 +7,11 @@ import java.util.Scanner;
 
 public class BookDeleter implements Operationable{
     List<Book> books;
+    Scanner scanner;
 
-    public BookDeleter(List<Book> books) {
+    public BookDeleter(Scanner scanner, List<Book> books) {
         this.books = books;
+        this.scanner = scanner;
     }
 
     @Override

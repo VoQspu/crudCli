@@ -6,6 +6,7 @@ import com.company.utility.FileUtility;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 
@@ -13,9 +14,11 @@ public class OperationHandler {
 
     List<Book> books;
     List<Operationable> operations = new ArrayList<>();
+    Scanner scanner;
 
     public OperationHandler() {
         books = getBooksFromFile();
+        scanner = new Scanner(System.in);
     }
 
     private List<Book> getBooksFromFile() {
@@ -28,17 +31,17 @@ public class OperationHandler {
 
     public void saveBooksToFile() {
         List<String> booksToSaveInCsv = books.stream()
-        .map(CsvUtility::deserialize)
-        .toList();
+                .map(CsvUtility::deserialize)
+                .toList();
 
         FileUtility.writeLinesToFile(booksToSaveInCsv);
     }
 
     public List<Operationable> getOperations() {
-        operations.add(new BookSearcher(books));
-        operations.add(new BookDeleter(books));
-        operations.add(new BookAlterer(books));
-        operations.add(new BookAdder(books));
+        operations.add(new BookSearcher(scanner, books));
+        operations.add(new BookDeleter(scanner, books));
+        operations.add(new BookAlterer(scanner, books));
+        operations.add(new BookAdder(scanner, books));
         return operations;
     }
 }

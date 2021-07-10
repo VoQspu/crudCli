@@ -16,7 +16,6 @@ public class FileUtility {
         } catch (FileNotFoundException e) {
             System.out.println("Nie ma takiego pliku!");
         }
-        System.out.println(csvFileLines);
         return csvFileLines;
     }
 

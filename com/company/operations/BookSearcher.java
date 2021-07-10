@@ -8,9 +8,11 @@ import java.util.Scanner;
 
 public class BookSearcher implements Operationable {
     List<Book> books;
+    Scanner scanner;
 
-    public BookSearcher(List<Book> books) {
+    public BookSearcher(Scanner scanner, List<Book> books) {
         this.books = books;
+        this.scanner = scanner;
     }
 
     @Override
@@ -20,7 +22,6 @@ public class BookSearcher implements Operationable {
 
     @Override
     public void performAction() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj id książki: ");
         try {
             int choice = Integer.parseInt(scanner.nextLine());

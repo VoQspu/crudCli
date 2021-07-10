@@ -8,9 +8,11 @@ import java.util.Scanner;
 
 public class BookAlterer implements Operationable {
     List<Book> books;
+    Scanner scanner;
 
-    public BookAlterer(List<Book> books) {
+    public BookAlterer(Scanner scanner, List<Book> books) {
         this.books = books;
+        this.scanner = scanner;
     }
 
     @Override
@@ -32,8 +34,10 @@ public class BookAlterer implements Operationable {
                     break; //książka znaleziona, przewij pętlę
                 }
             }
-            if (foundBook != null) {
-                System.out.println(CsvUtility.deserialize(foundBook));
+            if (foundBook == null) {
+                System.out.println("Nie znaleziono książki!");
+            } else {
+                System.out.println(foundBook);
                 System.out.println("""
                         Co chcesz zmienić?
                         1. tytuł
@@ -49,18 +53,10 @@ public class BookAlterer implements Operationable {
                     case 3 -> changePublicationDate(scanner, foundBook);
                     default -> System.out.println("Nieprawidłowa opcja!");
                 }
-            } else {
-                System.out.println("Nie znaleziono książki!");
             }
         } catch (NumberFormatException e) {
             System.out.println("Oczekiwano liczby!");
         }
-    }
-
-    private void changeId(Scanner scanner, Book book) {
-        System.out.println("Podaj nowe id:");
-        int newId = Integer.parseInt(scanner.nextLine());
-        book.setId(newId);
     }
 
     private void changeTitle(Scanner scanner, Book book) {
