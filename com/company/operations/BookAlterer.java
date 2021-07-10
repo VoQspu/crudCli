@@ -36,19 +36,17 @@ public class BookAlterer implements Operationable {
                 System.out.println(CsvUtility.deserialize(foundBook));
                 System.out.println("""
                         Co chcesz zmienić?
-                        1. id
-                        2. tytuł
-                        3. autor id
-                        4. rok publikacji
+                        1. tytuł
+                        2. autor id
+                        3. rok publikacji
                         """);
                 int alterChoice = Integer.parseInt(scanner.nextLine());
 
 
                 switch (alterChoice) {
-                    case 1 -> changeId(scanner, foundBook);
-                    case 2 -> changeTitle(scanner, foundBook);
-                    case 3 -> changeAuthorId(scanner, foundBook);
-                    case 4 -> changePublicationDate(scanner, foundBook);
+                    case 1 -> changeTitle(scanner, foundBook);
+                    case 2 -> changeAuthorId(scanner, foundBook);
+                    case 3 -> changePublicationDate(scanner, foundBook);
                     default -> System.out.println("Nieprawidłowa opcja!");
                 }
             } else {
