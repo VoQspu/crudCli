@@ -12,15 +12,14 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         OperationHandler operationHandler = new OperationHandler();
         List<Operationable> operations = operationHandler.getOperations();
-        int choice = -1;
 
-        while (choice != 0) {
+        while (true) {
             System.out.println("Aby zakończyć program wybierz 0");
             for (Operationable operation : operations) {
                 System.out.println(operation.getDescription());
             }
             try {
-                choice = Integer.parseInt(scanner.nextLine());
+                int choice = Integer.parseInt(scanner.nextLine());
                 if (choice == 0) {
                     break;
                 }
