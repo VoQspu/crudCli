@@ -1,5 +1,7 @@
 package com.company.utility;
 
+import com.company.exceptions.SpecialCaseException;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +16,7 @@ public class FileUtility {
                 csvFileLines.add(scanner.nextLine());
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Nie ma takiego pliku!");
-            System.exit(1);
+            throw new SpecialCaseException("Nie ma takiego pliku csv!");
         }
         return csvFileLines;
     }
