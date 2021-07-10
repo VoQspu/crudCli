@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BookDeleter implements Operationable{
-    List<Book> books;
-    Scanner scanner;
+    private List<Book> books;
+    private Scanner scanner;
 
     public BookDeleter(Scanner scanner, List<Book> books) {
         this.books = books;

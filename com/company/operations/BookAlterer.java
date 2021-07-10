@@ -8,8 +8,8 @@ import java.util.Optional;
 import java.util.Scanner;
 
 public class BookAlterer implements Operationable {
-    List<Book> books;
-    Scanner scanner;
+    private List<Book> books;
+    private Scanner scanner;
 
     public BookAlterer(Scanner scanner, List<Book> books) {
         this.books = books;
@@ -23,8 +23,6 @@ public class BookAlterer implements Operationable {
 
     @Override
     public void performAction() {
-        Scanner scanner = new Scanner(System.in);
-
         System.out.println("Podaj id książki, którą chcesz zmienić: ");
         try {
             int choice = Integer.parseInt(scanner.nextLine());

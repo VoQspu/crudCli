@@ -1,10 +1,10 @@
 package com.company.models;
 
 public class Book {
-    int id;
-    String title;
-    int authorId;
-    int publicationDate;
+    private int id;
+    private String title;
+    private int authorId;
+    private int publicationDate;
 
     public void setTitle(String title) {
         this.title = title;

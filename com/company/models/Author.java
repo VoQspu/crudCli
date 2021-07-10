@@ -1,7 +1,7 @@
 package com.company.models;
 
 public class Author {
-    int id;
-    String firstName;
-    String lastName;
+    private int id;
+    private String firstName;
+    private String lastName;
 }

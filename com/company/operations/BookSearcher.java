@@ -9,8 +9,8 @@ import java.util.Optional;
 import java.util.Scanner;
 
 public class BookSearcher implements Operationable {
-    List<Book> books;
-    Scanner scanner;
+    private List<Book> books;
+    private Scanner scanner;
 
     public BookSearcher(Scanner scanner, List<Book> books) {
         this.books = books;
@@ -28,11 +28,7 @@ public class BookSearcher implements Operationable {
         try {
             int choice = Integer.parseInt(scanner.nextLine());
             Optional<Book> foundBook = SearchUtility.findBook(books, choice);
-            if (foundBook.isPresent()) {
-                System.out.println(foundBook.get());
-            } else {
-                System.out.println("Nie ma książki o takim id!");
-            }
+            foundBook.ifPresent(System.out::println);
         } catch (NumberFormatException e) {
             System.out.println("Oczekiwano liczby!");
         }

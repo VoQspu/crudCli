@@ -11,10 +11,9 @@ import java.util.stream.Collectors;
 
 
 public class OperationHandler {
-
-    List<Book> books;
-    List<Operationable> operations = new ArrayList<>();
-    Scanner scanner;
+    private List<Book> books;
+    private List<Operationable> operations = new ArrayList<>();
+    private Scanner scanner;
 
     public OperationHandler() {
         books = getBooksFromFile();
