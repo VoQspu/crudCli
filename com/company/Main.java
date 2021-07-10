@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        OperationHandler operationHandler = new OperationHandler();
+        OperationHandler operationHandler = new OperationHandler(scanner);
         List<Operationable> operations = operationHandler.getOperations();
 
         while (true) {

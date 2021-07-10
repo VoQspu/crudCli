@@ -1,5 +1,6 @@
 package com.company.operations;
 
+import com.company.exceptions.BookNotFoundException;
 import com.company.models.Book;
 import com.company.utility.CsvUtility;
 import com.company.utility.SearchUtility;
@@ -28,9 +29,12 @@ public class BookSearcher implements Operationable {
         try {
             int choice = Integer.parseInt(scanner.nextLine());
             Optional<Book> foundBook = SearchUtility.findBook(books, choice);
-            foundBook.ifPresent(System.out::println);
+            System.out.println(foundBook.map(Book::toString)
+            .orElseThrow(BookNotFoundException::new));
         } catch (NumberFormatException e) {
             System.out.println("Oczekiwano liczby!");
+        } catch (BookNotFoundException e) {
+            System.out.println(e);
         }
     }
 }

@@ -15,9 +15,9 @@ public class OperationHandler {
     private List<Operationable> operations = new ArrayList<>();
     private Scanner scanner;
 
-    public OperationHandler() {
+    public OperationHandler(Scanner scanner) {
         books = getBooksFromFile();
-        scanner = new Scanner(System.in);
+        this.scanner = scanner;
     }
 
     private List<Book> getBooksFromFile() {

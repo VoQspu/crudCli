@@ -1,5 +1,6 @@
 package com.company.operations;
 
+import com.company.exceptions.BookNotFoundException;
 import com.company.models.Book;
 import com.company.utility.SearchUtility;
 
@@ -27,31 +28,33 @@ public class BookAlterer implements Operationable {
         try {
             int choice = Integer.parseInt(scanner.nextLine());
             Optional<Book> optionalBook = SearchUtility.findBook(books, choice);
-            if (optionalBook.isEmpty()) {
-                System.out.println("Nie znaleziono książki!");
-                return;
-            }
-            Book foundBook = optionalBook.get();
-            System.out.println(foundBook);
-            System.out.println("""
-                    Co chcesz zmienić?
-                    1. tytuł
-                    2. autor id
-                    3. rok publikacji
-                    """);
-            int alterChoice = Integer.parseInt(scanner.nextLine());
-
-
-            switch (alterChoice) {
-                case 1 -> changeTitle(scanner, foundBook);
-                case 2 -> changeAuthorId(scanner, foundBook);
-                case 3 -> changePublicationDate(scanner, foundBook);
-                default -> System.out.println("Nieprawidłowa opcja!");
-            }
-
+            System.out.println(optionalBook.map(this::editBook)
+                    .orElseThrow(BookNotFoundException::new));
         } catch (NumberFormatException e) {
             System.out.println("Oczekiwano liczby!");
+        } catch (BookNotFoundException e) {
+            System.out.println(e);
         }
+    }
+
+    private String editBook(Book book) throws NumberFormatException {
+        System.out.println(book);
+        System.out.println("""
+                Co chcesz zmienić?
+                1. tytuł
+                2. autor id
+                3. rok publikacji
+                """);
+        int alterChoice = Integer.parseInt(scanner.nextLine());
+
+
+        switch (alterChoice) {
+            case 1 -> changeTitle(scanner, book);
+            case 2 -> changeAuthorId(scanner, book);
+            case 3 -> changePublicationDate(scanner, book);
+            default -> System.out.println("Nieprawidłowa opcja!");
+        }
+        return "Książka została poprawnie zedytowana";
     }
 
     private void changeTitle(Scanner scanner, Book book) {
