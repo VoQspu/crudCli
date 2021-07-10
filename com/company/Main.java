@@ -12,21 +12,24 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         OperationHandler operationHandler = new OperationHandler();
         List<Operationable> operations = operationHandler.getOperations();
+        int choice = -1;
 
-        System.out.println("Aby zakończyć program wybierz 0");
-        for (Operationable operation : operations) {
-            System.out.println(operation.getDescription());
-        }
-        try {
-            int choice = Integer.parseInt(scanner.nextLine());
-            if (choice == 0) {
-                return;
+        while (choice != 0) {
+            System.out.println("Aby zakończyć program wybierz 0");
+            for (Operationable operation : operations) {
+                System.out.println(operation.getDescription());
             }
-            operations.get(choice-1).performAction();
-        } catch (NumberFormatException e) {
-            System.out.println("Nie podano cyfry!");
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Nie ma wyboru o takim numerze!");
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+                if (choice == 0) {
+                    break;
+                }
+                operations.get(choice-1).performAction();
+            } catch (NumberFormatException e) {
+                System.out.println("Nie podano cyfry!");
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("Nie ma wyboru o takim numerze!");
+            }
         }
         operationHandler.saveBooksToFile();
     }

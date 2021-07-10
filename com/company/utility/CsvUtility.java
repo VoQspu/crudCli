@@ -3,10 +3,11 @@ package com.company.utility;
 import com.company.models.Book;
 
 public class CsvUtility {
+    private static final String SEPARATOR = ",";
 
     public static Book serialize(String lineToSerialize) {
         Book book = new Book();
-        String[] splitString = lineToSerialize.split(",");
+        String[] splitString = lineToSerialize.split(SEPARATOR);
 
         try {
             book.setId(Integer.parseInt(splitString[0]));
@@ -23,9 +24,9 @@ public class CsvUtility {
 
     public static String deserialize(Book book) {
         StringBuilder builder = new StringBuilder();
-        builder.append(book.getId()).append(",")
-                .append(book.getTitle()).append(",")
-                .append(book.getAuthorId()).append(",")
+        builder.append(book.getId()).append(SEPARATOR)
+                .append(book.getTitle()).append(SEPARATOR)
+                .append(book.getAuthorId()).append(SEPARATOR)
                 .append(book.getPublicationDate());
         return builder.toString();
     }
