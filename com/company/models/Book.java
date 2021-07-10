@@ -39,6 +39,6 @@ public class Book {
     }
 
     public String toString() {
-        return getId() + "," + getTitle() + "," + getAuthorId() + getPublicationDate();
+        return getId() + "," + getTitle() + "," + getAuthorId() + "," + getPublicationDate();
     }
 }

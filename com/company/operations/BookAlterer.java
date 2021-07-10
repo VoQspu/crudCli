@@ -1,8 +1,10 @@
 package com.company.operations;
 
 import com.company.models.Book;
+import com.company.utility.SearchUtility;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class BookAlterer implements Operationable {
@@ -22,21 +24,16 @@ public class BookAlterer implements Operationable {
     @Override
     public void performAction() {
         Scanner scanner = new Scanner(System.in);
-        Book foundBook = null;
 
         System.out.println("Podaj id książki, którą chcesz zmienić: ");
         try {
             int choice = Integer.parseInt(scanner.nextLine());
-            for (Book b : books) {
-                if (b.getId() == choice) {
-                    foundBook = b;
-                    break; //książka znaleziona, przewij pętlę
-                }
-            }
-            if (foundBook == null) {
+            Optional<Book> optionalBook = SearchUtility.findBook(books, choice);
+            if (optionalBook.isEmpty()) {
                 System.out.println("Nie znaleziono książki!");
                 return;
             }
+            Book foundBook = optionalBook.get();
             System.out.println(foundBook);
             System.out.println("""
                     Co chcesz zmienić?

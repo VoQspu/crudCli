@@ -24,9 +24,12 @@ public class CsvUtility {
 
     public static String deserialize(Book book) {
         StringBuilder builder = new StringBuilder();
-        builder.append(book.getId()).append(SEPARATOR)
-                .append(book.getTitle()).append(SEPARATOR)
-                .append(book.getAuthorId()).append(SEPARATOR)
+        builder.append(book.getId())
+                .append(SEPARATOR)
+                .append(book.getTitle())
+                .append(SEPARATOR)
+                .append(book.getAuthorId())
+                .append(SEPARATOR)
                 .append(book.getPublicationDate());
         return builder.toString();
     }
