@@ -22,6 +22,9 @@ public class Main {
         while (true) {
             try {
                 System.out.println("Aby zakończyć program wybierz 0");
+                for (Operationable operation : operations) {
+                    System.out.println(operation.getDescription());
+                }
                 int choice = Integer.parseInt(scanner.nextLine());
                 if (choice == 0) {
                     break;
@@ -31,11 +34,6 @@ public class Main {
                 System.out.println("Nie podano cyfry!");
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("Nie ma wyboru o takim numerze!");
-            } catch (SpecialCaseException e) {
-                System.out.println(e);
-            }
-            for (Operationable operation : operations) {
-                System.out.println(operation.getDescription());
             }
         }
         operationHandler.saveBooksToFile();
