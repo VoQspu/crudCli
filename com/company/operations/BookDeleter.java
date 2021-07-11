@@ -35,5 +35,6 @@ public class BookDeleter implements Operationable{
         } catch (BookNotFoundException e) {
             System.out.println(e);
         }
+        System.out.println("Pomyślnie usunięto książkę");
     }
 }
