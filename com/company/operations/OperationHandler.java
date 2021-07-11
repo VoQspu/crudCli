@@ -69,7 +69,7 @@ public class OperationHandler {
         operations.add(new BookSearcher(scanner, books));
         operations.add(new BookDeleter(scanner, books));
         operations.add(new BookAlterer(scanner, books));
-        operations.add(new BookAdder(scanner, books));
+        operations.add(new BookAdder(scanner, books, authors));
         return operations;
     }
 }
