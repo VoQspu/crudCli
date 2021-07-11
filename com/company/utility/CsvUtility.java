@@ -20,7 +20,6 @@ public class CsvUtility {
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new SpecialCaseException("Elementu o tym indeksie nie ma w tablicy");
         }
-
         return book;
     }
 
