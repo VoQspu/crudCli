@@ -30,11 +30,11 @@ public class BookDeleter implements Operationable{
             Optional<Book> bookToDelete = SearchUtility.findBook(books, choice);
             bookToDelete.map(book -> books.remove(book))
                     .orElseThrow(BookNotFoundException::new);
+            System.out.println("Pomyślnie usunięto książkę");
         } catch (NumberFormatException e) {
             System.out.println("Oczekiwano liczby!");
         } catch (BookNotFoundException e) {
             System.out.println(e);
         }
-        System.out.println("Pomyślnie usunięto książkę");
     }
 }
