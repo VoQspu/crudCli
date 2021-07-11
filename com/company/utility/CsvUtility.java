@@ -30,7 +30,7 @@ public class CsvUtility {
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new SpecialCaseException("Elementu o tym indeksie nie ma w tablicy");
         } catch (AuthorNotFoundException e) {
-            System.out.println(e);
+            throw new SpecialCaseException("Książka posiada przypisane id autora, który nie istnieje w bazie!");
         }
         return book;
     }
