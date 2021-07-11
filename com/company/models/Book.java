@@ -1,7 +1,6 @@
 package com.company.models;
 
-public class Book {
-    private int id;
+public class Book extends AbstractCsvEntity {
     private String title;
     private Author author;
     private int publicationDate;
@@ -14,16 +13,8 @@ public class Book {
         this.publicationDate = publicationDate;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public String getTitle() {
         return title;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public Author getAuthor() {

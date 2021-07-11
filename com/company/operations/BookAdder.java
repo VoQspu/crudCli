@@ -33,7 +33,7 @@ public class BookAdder implements Operationable {
 
         try {
             for (Author author : authors) {
-                System.out.println(SearchUtility.findAuthor(authors, author.getId()).get());
+                System.out.println(SearchUtility.find(authors, author.getId()).get());
             }
             System.out.println("""
                     Czy chcesz przypisać istniejącego autora, czy dodać nowego?
@@ -46,7 +46,7 @@ public class BookAdder implements Operationable {
                 case 1 -> newAuthor = addNewAuthor();
                 case 2 -> {
                     System.out.println("Podaj id istniejącego autora");
-                    newAuthor = SearchUtility.findAuthor(authors, Integer.parseInt(scanner.nextLine()))
+                    newAuthor = SearchUtility.find(authors, Integer.parseInt(scanner.nextLine()))
                             .orElseThrow(AuthorNotFoundException::new);
                 }
                 default -> System.out.println("Nie ma takiej opcji!");

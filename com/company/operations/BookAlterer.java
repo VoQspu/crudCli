@@ -32,7 +32,7 @@ public class BookAlterer implements Operationable {
         try {
             System.out.println(books);
             int choice = Integer.parseInt(scanner.nextLine());
-            Optional<Book> optionalBook = SearchUtility.findBook(books, choice);
+            Optional<Book> optionalBook = SearchUtility.find(books, choice);
             System.out.println(optionalBook.map(this::editBook)
                     .orElseThrow(BookNotFoundException::new));
         } catch (NumberFormatException e) {
@@ -74,7 +74,7 @@ public class BookAlterer implements Operationable {
         System.out.println(authors);
         System.out.println("Podaj id autora, który ma zostac przypisany do książki");
 
-        Author author = SearchUtility.findAuthor(authors, Integer.parseInt(scanner.nextLine()))
+        Author author = SearchUtility.find(authors, Integer.parseInt(scanner.nextLine()))
                 .orElseThrow(AuthorNotFoundException::new);
         book.setAuthor(author);
     }

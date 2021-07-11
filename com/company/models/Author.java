@@ -1,14 +1,8 @@
 package com.company.models;
 
-public class Author {
-    private int id;
+public class Author extends AbstractCsvEntity{
     private String firstName;
     private String lastName;
-
-
-    public int getId() {
-        return id;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -16,10 +10,6 @@ public class Author {
 
     public String getLastName() {
         return lastName;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public void setFirstName(String firstName) {

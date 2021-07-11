@@ -27,7 +27,7 @@ public class BookDeleter implements Operationable{
         System.out.println("Podaj id książki, którą chcesz usunąć: ");
         try {
             int choice = Integer.parseInt(scanner.nextLine());
-            Optional<Book> bookToDelete = SearchUtility.findBook(books, choice);
+            Optional<Book> bookToDelete = SearchUtility.find(books, choice);
             bookToDelete.map(book -> books.remove(book))
                     .orElseThrow(BookNotFoundException::new);
             System.out.println("Pomyślnie usunięto książkę");
