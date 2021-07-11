@@ -13,20 +13,12 @@ import java.util.stream.Collectors;
 
 
 public class OperationHandler {
-    private static final String PATH_TO_BOOK_DB = "/home/krypton/IdeaProjects/cliCrud/src/com/company/database.csv";
-    private static final String PATH_TO_AUTHOR_DB = "/home/krypton/IdeaProjects/cliCrud/src/com/company/authors.csv";
+    public static final String PATH_TO_BOOK_DB = "/home/krypton/IdeaProjects/cliCrud/src/com/company/database.csv";
+    public static final String PATH_TO_AUTHOR_DB = "/home/krypton/IdeaProjects/cliCrud/src/com/company/authors.csv";
     private List<Book> books;
     private List<Author> authors;
     private List<Operationable> operations = new ArrayList<>();
     private Scanner scanner;
-
-    public static String getPathToBookDb() {
-        return PATH_TO_BOOK_DB;
-    }
-
-    public static String getPathToAuthorDb() {
-        return PATH_TO_AUTHOR_DB;
-    }
 
     public OperationHandler(Scanner scanner) {
         authors = getAuthorsFromFile(PATH_TO_AUTHOR_DB);

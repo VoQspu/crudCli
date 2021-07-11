@@ -1,13 +1,11 @@
 package com.company.utility;
 
 import com.company.exceptions.AuthorNotFoundException;
-import com.company.exceptions.BookNotFoundException;
 import com.company.exceptions.SpecialCaseException;
 import com.company.models.Author;
 import com.company.models.Book;
 
 import java.util.List;
-import java.util.Optional;
 
 public class CsvUtility {
     private static final String SEPARATOR = ",";

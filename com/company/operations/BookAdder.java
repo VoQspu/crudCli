@@ -1,7 +1,9 @@
 package com.company.operations;
 
+import com.company.exceptions.AuthorNotFoundException;
 import com.company.models.Author;
 import com.company.models.Book;
+import com.company.utility.SearchUtility;
 
 import java.util.List;
 import java.util.Scanner;
@@ -28,23 +30,52 @@ public class BookAdder implements Operationable {
         Author newAuthor = new Author();
 
         newBook.setId(books.size() + 1); //nowe id większe o 1, id zaczyna się od 1 w csv
-        newAuthor.setId(authors.size() + 1);
 
         try {
+            for (Author author : authors) {
+                System.out.println(SearchUtility.findAuthor(authors, author.getId()).get());
+            }
+            System.out.println("""
+                    Czy chcesz przypisać istniejącego autora, czy dodać nowego?
+                    1. Dodaj nowego
+                    2. Przypisz istniejącego
+                    """);
+            int choice = Integer.parseInt(scanner.nextLine());
+
+            switch (choice) {
+                case 1 -> newAuthor = addNewAuthor();
+                case 2 -> {
+                    System.out.println("Podaj id istniejącego autora");
+                    newAuthor = SearchUtility.findAuthor(authors, Integer.parseInt(scanner.nextLine()))
+                            .orElseThrow(AuthorNotFoundException::new);
+                }
+                default -> System.out.println("Nie ma takiej opcji!");
+            }
+
             System.out.println("Podaj tytuł:");
             newBook.setTitle(scanner.nextLine());
-            System.out.println("Podaj imię autora:");
-            newAuthor.setFirstName(scanner.nextLine());
-            System.out.println("Podaj naziwsko autora:");
-            newAuthor.setLastName((scanner.nextLine()));
             System.out.println("Podaj rok publikacji:");
             newBook.setPublicationDate(Integer.parseInt(scanner.nextLine()));
 
             newBook.setAuthor(newAuthor);
             books.add(newBook);
-            authors.add(newAuthor);
         } catch (NumberFormatException e) {
             System.out.println("Oczekiwano liczby!");
+        } catch (AuthorNotFoundException e) {
+            System.out.println(e);
+            return;
         }
+    }
+    private Author addNewAuthor() {
+        Author author = new Author();
+        author.setId(authors.size() + 1);
+
+        System.out.println("Podaj imię autora:");
+        author.setFirstName(scanner.nextLine());
+        System.out.println("Podaj naziwsko autora:");
+        author.setLastName((scanner.nextLine()));
+
+        authors.add(author);
+        return author;
     }
 }
