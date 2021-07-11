@@ -11,11 +11,17 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        OperationHandler operationHandler = new OperationHandler(scanner);
+        OperationHandler operationHandler = null;
+        try {
+            operationHandler = new OperationHandler(scanner);
+        } catch (SpecialCaseException e) {
+            System.out.println(e);
+        }
         List<Operationable> operations = operationHandler.getOperations();
 
         while (true) {
             try {
+                System.out.println("Aby zakończyć program wybierz 0");
                 int choice = Integer.parseInt(scanner.nextLine());
                 if (choice == 0) {
                     break;
@@ -28,7 +34,6 @@ public class Main {
             } catch (SpecialCaseException e) {
                 System.out.println(e);
             }
-            System.out.println("Aby zakończyć program wybierz 0");
             for (Operationable operation : operations) {
                 System.out.println(operation.getDescription());
             }
