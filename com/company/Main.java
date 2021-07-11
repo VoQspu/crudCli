@@ -27,7 +27,8 @@ public class Main {
                 }
                 operations.get(choice - 1).performAction();
             }
-            operationHandler.saveBooksToFile();
+            operationHandler.saveBooksToFile(OperationHandler.getPathToBookDb());
+            operationHandler.saveAuthorsToFile(OperationHandler.getPathToAuthorDb());
         } catch (NumberFormatException e) {
             System.out.println("Nie podano cyfry!");
         } catch (IndexOutOfBoundsException e) {

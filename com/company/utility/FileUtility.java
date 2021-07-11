@@ -9,9 +9,9 @@ import java.util.Scanner;
 
 public class FileUtility {
 
-    public static List<String> readLinesFromFile() {
+    public static List<String> readLinesFromFile(String pathToCsv) {
         List<String> csvFileLines = new ArrayList<>();
-        try (Scanner scanner = new Scanner(new File("/home/krypton/IdeaProjects/cliCrud/src/com/company/database.csv"))){
+        try (Scanner scanner = new Scanner(new File(pathToCsv))){
             while (scanner.hasNext()) {
                 csvFileLines.add(scanner.nextLine());
             }
@@ -22,8 +22,8 @@ public class FileUtility {
     }
 
 
-    public static void writeLinesToFile(List<String> writeLinesToFile) {
-        try (Writer writer = new FileWriter("/home/krypton/IdeaProjects/cliCrud/src/com/company/database.csv")){
+    public static void writeLinesToFile(List<String> writeLinesToFile, String pathToCsv) {
+        try (Writer writer = new FileWriter(pathToCsv)){
             for (String e : writeLinesToFile) {
                 writer.write(e + "\n");
             }

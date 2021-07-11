@@ -42,16 +42,18 @@ public class BookAlterer implements Operationable {
         System.out.println("""
                 Co chcesz zmienić?
                 1. tytuł
-                2. autor id
-                3. rok publikacji
+                2. imię autora
+                3. nazwisko autora
+                4. rok publikacji
                 """);
         int alterChoice = Integer.parseInt(scanner.nextLine());
 
 
         switch (alterChoice) {
             case 1 -> changeTitle(scanner, book);
-            case 2 -> changeAuthorId(scanner, book);
-            case 3 -> changePublicationDate(scanner, book);
+            case 2 -> changeAuthorFirstName(scanner, book);
+            case 3 -> changeAuthorLastName(scanner, book);
+            case 4 -> changePublicationDate(scanner, book);
             default -> System.out.println("Nieprawidłowa opcja!");
         }
         return "Książka została poprawnie zedytowana";
@@ -62,10 +64,14 @@ public class BookAlterer implements Operationable {
         book.setTitle(scanner.nextLine());
     }
 
-    private void changeAuthorId(Scanner scanner, Book book) {
-        System.out.println("Podaj nowe id autora:");
-        int newAuthorId = Integer.parseInt(scanner.nextLine());
-        book.setAuthorId(newAuthorId);
+    private void changeAuthorFirstName(Scanner scanner, Book book) {
+        System.out.println("Podaj imię do zmiany:");
+        book.getAuthor().setFirstName(scanner.nextLine());
+    }
+
+    private void changeAuthorLastName(Scanner scanner, Book book) {
+        System.out.println("Podaj nazwisko do zmiany:");
+        book.getAuthor().setLastName(scanner.nextLine());
     }
 
     private void changePublicationDate(Scanner scanner, Book book) {

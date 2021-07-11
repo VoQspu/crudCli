@@ -18,6 +18,10 @@ public class Author {
         return lastName;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }

@@ -3,7 +3,7 @@ package com.company.models;
 public class Book {
     private int id;
     private String title;
-    private int authorId;
+    private Author author;
     private int publicationDate;
 
     public void setTitle(String title) {
@@ -22,16 +22,16 @@ public class Book {
         return title;
     }
 
-    public void setAuthorId(int authorId) {
-        this.authorId = authorId;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
 
-    public int getAuthorId() {
-        return authorId;
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     public int getPublicationDate() {
@@ -39,6 +39,6 @@ public class Book {
     }
 
     public String toString() {
-        return getId() + "," + getTitle() + "," + getAuthorId() + "," + getPublicationDate();
+        return getId() + "," + getTitle() + "," + getAuthor() + "," + getPublicationDate();
     }
 }

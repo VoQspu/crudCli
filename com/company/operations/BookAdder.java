@@ -28,8 +28,10 @@ public class BookAdder implements Operationable {
         try {
             System.out.println("Podaj tytuł:");
             newBook.setTitle(scanner.nextLine());
-            System.out.println("Podaj id autora:");
-            newBook.setAuthorId(Integer.parseInt(scanner.nextLine()));
+            System.out.println("Podaj imię autora:");
+            newBook.getAuthor().setFirstName(scanner.nextLine());
+            System.out.println("Podaj naziwsko autora:");
+            newBook.getAuthor().setLastName((scanner.nextLine()));
             System.out.println("Podaj rok publikacji:");
             newBook.setPublicationDate(Integer.parseInt(scanner.nextLine()));
             books.add(newBook);
