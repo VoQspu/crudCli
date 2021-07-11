@@ -60,7 +60,7 @@ public class OperationHandler {
     public List<Operationable> getOperations() {
         operations.add(new BookSearcher(scanner, books));
         operations.add(new BookDeleter(scanner, books));
-        operations.add(new BookAlterer(scanner, books));
+        operations.add(new BookAlterer(scanner, books, authors));
         operations.add(new BookAdder(scanner, books, authors));
         return operations;
     }

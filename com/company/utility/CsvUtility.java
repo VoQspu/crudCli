@@ -18,9 +18,7 @@ public class CsvUtility {
             book.setId(Integer.parseInt(splitString[0]));
             book.setTitle(splitString[1]);
             book.setPublicationDate(Integer.parseInt(splitString[3]));
-            Author author = authors.stream()
-                    .filter(author1 -> author1.getId() == Integer.parseInt(splitString[2]))
-                    .findFirst()
+            Author author = SearchUtility.findAuthor(authors, Integer.parseInt(splitString[2]))
                     .orElseThrow(AuthorNotFoundException::new);
             book.setAuthor(author);
         } catch (NumberFormatException e) {
