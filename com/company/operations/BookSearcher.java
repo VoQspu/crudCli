@@ -30,7 +30,7 @@ public class BookSearcher implements Operationable {
             int choice = Integer.parseInt(scanner.nextLine());
             Optional<Book> foundBook = SearchUtility.findBook(books, choice);
             System.out.println(foundBook.map(Book::toString)
-            .orElseThrow(BookNotFoundException::new));
+                    .orElseThrow(BookNotFoundException::new));
         } catch (NumberFormatException e) {
             System.out.println("Oczekiwano liczby!");
         } catch (BookNotFoundException e) {

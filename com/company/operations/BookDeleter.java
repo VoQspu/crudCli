@@ -1,8 +1,11 @@
 package com.company.operations;
 
+import com.company.exceptions.BookNotFoundException;
 import com.company.models.Book;
+import com.company.utility.SearchUtility;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class BookDeleter implements Operationable{
@@ -24,12 +27,13 @@ public class BookDeleter implements Operationable{
         System.out.println("Podaj id książki, którą chcesz usunąć: ");
         try {
             int choice = Integer.parseInt(scanner.nextLine());
-            books.stream()
-                    .filter(book -> book.getId() == choice)
-                    .findFirst()
-                    .ifPresent(book -> books.remove(book));
+            Optional<Book> bookToDelete = SearchUtility.findBook(books, choice);
+            bookToDelete.map(book -> books.remove(book))
+                    .orElseThrow(BookNotFoundException::new);
         } catch (NumberFormatException e) {
             System.out.println("Oczekiwano liczby!");
+        } catch (BookNotFoundException e) {
+            System.out.println(e);
         }
     }
 }
