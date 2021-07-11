@@ -28,7 +28,7 @@ public class BookSearcher implements Operationable {
         System.out.println("Podaj id książki: ");
         try {
             int choice = Integer.parseInt(scanner.nextLine());
-            Optional<Book> foundBook = SearchUtility.find(books, choice);
+            Optional<Book> foundBook = SearchUtility.findElementById(books, choice);
             System.out.println(foundBook.map(Book::toString)
                     .orElseThrow(BookNotFoundException::new));
         } catch (NumberFormatException e) {
