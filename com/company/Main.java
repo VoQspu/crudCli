@@ -11,16 +11,12 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        OperationHandler operationHandler = null;
+        OperationHandler operationHandler;
         try {
             operationHandler = new OperationHandler(scanner);
-        } catch (SpecialCaseException e) {
-            System.out.println(e);
-        }
-        List<Operationable> operations = operationHandler.getOperations();
+            List<Operationable> operations = operationHandler.getOperations();
 
-        while (true) {
-            try {
+            while (true) {
                 System.out.println("Aby zakończyć program wybierz 0");
                 for (Operationable operation : operations) {
                     System.out.println(operation.getDescription());
@@ -30,12 +26,14 @@ public class Main {
                     break;
                 }
                 operations.get(choice - 1).performAction();
-            } catch (NumberFormatException e) {
-                System.out.println("Nie podano cyfry!");
-            } catch (IndexOutOfBoundsException e) {
-                System.out.println("Nie ma wyboru o takim numerze!");
             }
+            operationHandler.saveBooksToFile();
+        } catch (NumberFormatException e) {
+            System.out.println("Nie podano cyfry!");
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Nie ma wyboru o takim numerze!");
+        } catch (SpecialCaseException e) {
+            System.out.println(e);
         }
-        operationHandler.saveBooksToFile();
     }
 }
