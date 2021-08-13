@@ -1,7 +1,6 @@
 package com.company;
 
 import com.company.exceptions.SpecialCaseException;
-import com.company.models.Author;
 import com.company.operations.OperationHandler;
 import com.company.operations.Operationable;
 

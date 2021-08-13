@@ -1,7 +1,6 @@
 package com.company.operations;
 
 import com.company.exceptions.BookNotFoundException;
-import com.company.models.Author;
 import com.company.models.Book;
 import com.company.utility.SearchUtility;
 
