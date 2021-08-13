@@ -13,8 +13,8 @@ import java.util.stream.Collectors;
 
 
 public class OperationHandler {
-    public static final String PATH_TO_BOOK_DB = "/home/krypton/IdeaProjects/cliCrud/src/com/company/database.csv";
-    public static final String PATH_TO_AUTHOR_DB = "/home/krypton/IdeaProjects/cliCrud/src/com/company/authors.csv";
+    public static final String PATH_TO_BOOK_DB = System.getProperty("user.home") + "/IdeaProjects/cliCrud/src/com/company/database.csv";
+    public static final String PATH_TO_AUTHOR_DB = System.getProperty("user.home") + "/IdeaProjects/cliCrud/src/com/company/authors.csv";
     private List<Book> books;
     private List<Author> authors;
     private List<Operationable> operations = new ArrayList<>();
