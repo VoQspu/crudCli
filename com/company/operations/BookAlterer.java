@@ -7,19 +7,18 @@ import com.company.models.Book;
 import com.company.utility.SearchUtility;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
 public class BookAlterer implements Operationable {
-    private List<Book> books;
-    private List<Author> authors;
+    private Collection<Book> books;
+    private Collection<Author> authors;
     private Scanner scanner;
 
     public BookAlterer(Scanner scanner, Collection<Book> books, Collection<Author> authors) {
-        this.books = (List<Book>)books;
+        this.books = books;
         this.scanner = scanner;
-        this.authors = (List<Author>)authors;
+        this.authors = authors;
     }
 
     @Override

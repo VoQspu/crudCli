@@ -5,13 +5,12 @@ import com.company.exceptions.SpecialCaseException;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.Scanner;
 
 public class FileUtility {
 
     public static Collection<String> readLinesFromFile(String pathToCsv) {
-        List<String> csvFileLines = new ArrayList<>();
+        Collection<String> csvFileLines = new ArrayList<>();
         try (Scanner scanner = new Scanner(new File(pathToCsv))){
             while (scanner.hasNext()) {
                 csvFileLines.add(scanner.nextLine());

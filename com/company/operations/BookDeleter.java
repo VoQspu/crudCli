@@ -5,16 +5,15 @@ import com.company.models.Book;
 import com.company.utility.SearchUtility;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
 public class BookDeleter implements Operationable{
-    private List<Book> books;
+    private Collection<Book> books;
     private Scanner scanner;
 
     public BookDeleter(Scanner scanner, Collection<Book> books) {
-        this.books = (List<Book>)books;
+        this.books = books;
         this.scanner = scanner;
     }
 

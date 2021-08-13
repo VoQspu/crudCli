@@ -27,7 +27,7 @@ public class OperationHandler {
     }
 
     private List<Book> getBooksFromFile(String pathToDb) {
-        List<String> csvFileLines = (List<String>)FileUtility.readLinesFromFile(pathToDb);
+        Collection<String> csvFileLines = FileUtility.readLinesFromFile(pathToDb);
 
         return csvFileLines.stream()
                 .map(lineToSerialize -> CsvUtility.serialize(lineToSerialize, authors))
@@ -35,7 +35,7 @@ public class OperationHandler {
     }
 
     private List<Author> getAuthorsFromFile(String pathToDb) {
-        List<String> csvFileLines = (List<String>)FileUtility.readLinesFromFile(pathToDb);
+        Collection<String> csvFileLines = FileUtility.readLinesFromFile(pathToDb);
 
         return csvFileLines.stream()
                 .map(CsvUtility::serializeAuthors)
