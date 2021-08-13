@@ -7,6 +7,7 @@ import com.company.utility.FileUtility;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -21,21 +22,21 @@ public class OperationHandler {
     private Scanner scanner;
 
     public OperationHandler(Scanner scanner) {
-        authors = getAuthorsFromFile(PATH_TO_AUTHOR_DB);
-        books = getBooksFromFile(PATH_TO_BOOK_DB);
+        authors = (List<Author>)getAuthorsFromFile(PATH_TO_AUTHOR_DB);
+        books = (List<Book>)getBooksFromFile(PATH_TO_BOOK_DB);
         this.scanner = scanner;
     }
 
-    private List<Book> getBooksFromFile(String pathToDb) {
-        List<String> csvFileLines = FileUtility.readLinesFromFile(pathToDb);
+    private Collection<Book> getBooksFromFile(String pathToDb) {
+        List<String> csvFileLines = (List<String>)FileUtility.readLinesFromFile(pathToDb);
 
         return csvFileLines.stream()
                 .map(lineToSerialize -> CsvUtility.serialize(lineToSerialize, authors))
                 .collect(Collectors.toList());
     }
 
-    private List<Author> getAuthorsFromFile(String pathToDb) {
-        List<String> csvFileLines = FileUtility.readLinesFromFile(pathToDb);
+    private Collection<Author> getAuthorsFromFile(String pathToDb) {
+        List<String> csvFileLines = (List<String>)FileUtility.readLinesFromFile(pathToDb);
 
         return csvFileLines.stream()
                 .map(CsvUtility::serializeAuthors)
@@ -57,7 +58,7 @@ public class OperationHandler {
 
         FileUtility.writeLinesToFile(authorsToSaveInCsv, pathToDb);
     }
-    public List<Operationable> getOperations() {
+    public Collection<Operationable> getOperations() {
         operations.add(new BookSearcher(scanner, books));
         operations.add(new BookDeleter(scanner, books));
         operations.add(new BookAlterer(scanner, books, authors));

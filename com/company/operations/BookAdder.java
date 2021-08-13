@@ -5,6 +5,7 @@ import com.company.models.Author;
 import com.company.models.Book;
 import com.company.utility.SearchUtility;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,10 +14,10 @@ public class BookAdder implements Operationable {
     private List<Author> authors;
     private Scanner scanner;
 
-    public BookAdder(Scanner scanner, List<Book> books, List<Author> authors) {
-        this.books = books;
+    public BookAdder(Scanner scanner, Collection<Book> books, Collection<Author> authors) {
+        this.books = (List<Book>)books;
         this.scanner = scanner;
-        this.authors = authors;
+        this.authors = (List<Author>)authors;
     }
 
     @Override

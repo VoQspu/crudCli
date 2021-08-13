@@ -4,12 +4,13 @@ import com.company.exceptions.SpecialCaseException;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 
 public class FileUtility {
 
-    public static List<String> readLinesFromFile(String pathToCsv) {
+    public static Collection<String> readLinesFromFile(String pathToCsv) {
         List<String> csvFileLines = new ArrayList<>();
         try (Scanner scanner = new Scanner(new File(pathToCsv))){
             while (scanner.hasNext()) {
@@ -22,7 +23,7 @@ public class FileUtility {
     }
 
 
-    public static void writeLinesToFile(List<String> writeLinesToFile, String pathToCsv) {
+    public static void writeLinesToFile(Collection<String> writeLinesToFile, String pathToCsv) {
         try (Writer writer = new FileWriter(pathToCsv)){
             for (String e : writeLinesToFile) {
                 writer.write(e + "\n");

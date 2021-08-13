@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.exceptions.SpecialCaseException;
+import com.company.models.Author;
 import com.company.operations.OperationHandler;
 import com.company.operations.Operationable;
 
@@ -14,7 +15,7 @@ public class Main {
         OperationHandler operationHandler;
         try {
             operationHandler = new OperationHandler(scanner);
-            List<Operationable> operations = operationHandler.getOperations();
+            List<Operationable> operations = (List<Operationable>)operationHandler.getOperations();
 
             while (true) {
                 System.out.println("Aby zakończyć program wybierz 0");

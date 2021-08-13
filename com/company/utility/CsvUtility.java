@@ -5,12 +5,13 @@ import com.company.exceptions.SpecialCaseException;
 import com.company.models.Author;
 import com.company.models.Book;
 
+import java.util.Collection;
 import java.util.List;
 
 public class CsvUtility {
     private static final String SEPARATOR = ",";
 
-    public static Book serialize(String lineToSerialize, List<Author> authors) {
+    public static Book serialize(String lineToSerialize, Collection<Author> authors) {
         Book book = new Book();
         String[] splitString = lineToSerialize.split(SEPARATOR);
 
