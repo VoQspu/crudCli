@@ -33,7 +33,7 @@ public class BookAdder implements Operationable {
 
         try {
             for (Author author : authors) {
-                System.out.println(SearchUtility.findElementById(authors, author.getId()).get());
+                System.out.println(author);
             }
             System.out.println("""
                     Czy chcesz przypisać istniejącego autora, czy dodać nowego?
