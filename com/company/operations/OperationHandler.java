@@ -21,12 +21,12 @@ public class OperationHandler {
     private Scanner scanner;
 
     public OperationHandler(Scanner scanner) {
-        authors = (List<Author>)getAuthorsFromFile(PATH_TO_AUTHOR_DB);
-        books = (List<Book>)getBooksFromFile(PATH_TO_BOOK_DB);
+        authors = getAuthorsFromFile(PATH_TO_AUTHOR_DB);
+        books = getBooksFromFile(PATH_TO_BOOK_DB);
         this.scanner = scanner;
     }
 
-    private Collection<Book> getBooksFromFile(String pathToDb) {
+    private List<Book> getBooksFromFile(String pathToDb) {
         List<String> csvFileLines = (List<String>)FileUtility.readLinesFromFile(pathToDb);
 
         return csvFileLines.stream()
@@ -34,7 +34,7 @@ public class OperationHandler {
                 .collect(Collectors.toList());
     }
 
-    private Collection<Author> getAuthorsFromFile(String pathToDb) {
+    private List<Author> getAuthorsFromFile(String pathToDb) {
         List<String> csvFileLines = (List<String>)FileUtility.readLinesFromFile(pathToDb);
 
         return csvFileLines.stream()
